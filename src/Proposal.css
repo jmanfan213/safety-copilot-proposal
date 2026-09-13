@@ -1,0 +1,84 @@
+.proposal-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #1d4ed8;
+  text-underline-offset: 4px;
+}
+
+.back-link:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.proposal-document {
+  padding: clamp(24px, 5vw, 64px);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  overflow-wrap: anywhere;
+}
+
+.proposal-header {
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.proposal-label {
+  margin: 0 0 12px;
+  color: #1d4ed8;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.proposal-header h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.proposal-tagline {
+  font-size: 1.25rem;
+  color: #1d4ed8;
+}
+
+.proposal-meta {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.proposal-document section {
+  margin-top: 36px;
+}
+
+.proposal-document h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.proposal-document section p,
+.proposal-document li {
+  color: #475569;
+  line-height: 1.8;
+}
+
+.proposal-document ul,
+.proposal-document ol {
+  padding-left: 24px;
+}
+
+.proposal-document li + li {
+  margin-top: 12px;
+}
+
+.proposal-references {
+  padding-top: 8px;
+}
