@@ -60,3 +60,7 @@ Open the local URL printed in the terminal, then select **View Proposal** to ope
 | `npm run lint` | Check the JavaScript and JSX with ESLint |
 
 When deploying, configure the host to serve `index.html` for `/proposal` so opening or refreshing that URL loads the React app.
+
+## AI Assistance
+
+OpenAI Codex assisted with the React implementation, CSS styling, proposal template structure, and README documentation.
