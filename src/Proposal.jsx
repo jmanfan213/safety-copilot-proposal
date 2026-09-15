@@ -31,12 +31,15 @@ function Proposal() {
           <h2 id="users-heading">2. Target Users and User Goals</h2>
           {/* <p>[Identify the specific users you intend to serve, such as software safety engineers or requirements reviewers. Describe their experience, work context, current workflow, and challenges.]</p> */}
           {/* <p>[Explain the goals the system would help these users achieve. Consider goals such as finding ambiguous requirements, reviewing possible safety concerns, and documenting the reasoning behind decisions. Specify which goals your project will prioritize.]</p> */}
+          <p>The target users for SafetyCopilot are primarily software safety engineers and requirements reviewers.</p> 
+          
         </section>
 
         <section aria-labelledby="user-study-heading">
           <h2 id="user-study-heading">3. How We Will Study Target Users</h2>
           {/* <p>[Describe how you will learn about users before and during design, for example through interviews, workflow observation, or reviews of example requirements. State what you want to learn, the activities participants will complete, and what information you will collect.]</p> */}
           {/* <p>[Explain how you will analyze what you learn and turn those findings into design requirements or changes to your prototype.]</p> */}
+          <p>User performance will be evaluated through workflow observation.</p>
         </section>
 
         <section aria-labelledby="solution-heading">
@@ -50,12 +53,14 @@ function Proposal() {
           <h2 id="evaluation-heading">5. How We Will Evaluate Success</h2>
           {/* <p>[Describe how you will evaluate the prototype with representative tasks and users. Explain the evaluation procedure and any comparison to an existing workflow or baseline.]</p> */}
           {/* <p>[Choose measures linked to your user goals, such as task completion, review quality, time taken, usability, or whether users recognize incorrect AI suggestions. State what results would count as success and how you will use feedback to improve the design.]</p> */}
+          <p>The evaluatrion procedure will be comprised.</p>
         </section>
 
         <section aria-labelledby="recruitment-heading">
           <h2 id="recruitment-heading">6. How We Will Recruit Participants</h2>
           {/* <p>[State who is eligible to participate, the number you aim to recruit for user research and evaluation, and where you will reach them, such as professional contacts, relevant courses, or engineering groups.]</p> */}
           {/* <p>[Describe how you will invite participants, the time commitment, and any compensation. Explain how you will obtain consent and protect participant information. If access to safety engineers is limited, describe a feasible alternative and how that would limit your conclusions.]</p> */}
+          <p>Recruitment of participants will take place.</p>
         </section>
 
         <section aria-labelledby="references-heading">
