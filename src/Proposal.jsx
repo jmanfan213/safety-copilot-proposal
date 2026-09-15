@@ -80,5 +80,22 @@ function Proposal() {
   )
 }
 
+/*
+human-AI interaction papers:
+https://www.sciencedirect.com/science/article/pii/S1071581924000855 From explainable to interactive AI: A literature review on current trends in human-AI interaction
+https://dl.acm.org/doi/full/10.1145/3696449 A systematic review on fostering appropriate trust in Human-AI interaction: Trends, opportunities and challenges
+
+
+software safety analysis papers:
+https://www.emerald.com/imds/article-abstract/122/2/442/183810/Artificial-intelligence-in-safety-critical-systems?redirectedFrom=fulltext Artificial intelligence in safety-critical systems: a systematic review
+https://ieeexplore.ieee.org/abstract/document/49569 Cost-effective software safety analysis
+
+requirements engineering papers:
+https://nzjohng.github.io/publications/papers/gaire2024.pdf Advancing Requirements Engineering through Generative AI: Assessing the Role of LLMs
+https://arxiv.org/abs/2311.03832 Requirements Engineering using Generative AI: Prompts and Prompting Patterns
+
+*/
+
+
 export default Proposal
 
