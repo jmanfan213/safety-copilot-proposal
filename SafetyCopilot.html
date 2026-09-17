@@ -54,6 +54,27 @@
         font-size: 0.85em;
         color: #666;
     }
+    .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: #003366;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    background: #005599;
+    text-decoration: underline;
+}
 </style>
 </head>
 
@@ -66,7 +87,20 @@
     <p>An Interactive AI System for Hazard Analysis of Software Requirements</p>
 </header>
 
-<section>
+<nav class="menu" aria-label="Page sections">
+    <a href="#abstract">Abstract</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#researchcontext">Research Context</a>
+    <a href="#problemstatement">Problem Statement</a>
+    <a href="#researchobjectives">Research Objectives</a>
+    <a href="#researchhypothesis">Research Hypotheses</a>
+    <a href="#system">System Description</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#expectedoutcomes">Expected Outcomes</a>
+    <a href="#references">References</a>
+</nav>
+
+<section id="abstract">
     <h2>Abstract</h2>
 
     <p>
@@ -97,7 +131,7 @@
 </section>
 
 
-<section>
+<section id="introduction">
     <h2>Introduction</h2>
     <p>
        The increasing complexity of software-intensive systems has significantly transformed modern safety engineering. 
@@ -129,7 +163,7 @@
     </p>
 </section>
 
-<section>
+<section id="researchcontext">
     <h2>Research Context </h2>
 
     <h3>What Human Safety Engineers Do During Hazard Analysis </h3>
@@ -253,7 +287,7 @@
 </section>
 
 
-<section>
+<section id="problemstatement">
     <h2>Problem Statement</h2>
     <p>
         Traditional hazard analysis requires extensive manual review of requirements documents, often resulting 
@@ -268,7 +302,7 @@
     </p>
 </section>
 
-<section>
+<section id="researchobjectives">
     <h2>Research Objectives</h2>
     <ul>
         <li>Evaluate whether SafetyCopilot improves hazard‑identification accuracy compared to human‑only analysis.</li>
@@ -279,7 +313,7 @@
     </ul>
 </section>
 
-<section>
+<section id="researchhypothesis">
     <h2>Research Hypotheses</h2>
     
     <h3>H1: Hazard Identification</h3>
@@ -347,7 +381,7 @@ nations:
 </section>
 
 
-<section>
+<section id="system">
     <h2>System Description</h2>
     <p>
         SafetyCopilot is a web‑based application that allows users to upload system requirements documents 
@@ -368,7 +402,7 @@ nations:
     </p>
 </section>
 
-<section>
+<section id="methodology">
     <h2>Methodology</h2>
     <p>
         The research will follow a controlled experimental design using SafetyCopilot as the primary tool for 
@@ -392,7 +426,7 @@ nations:
     </p>
 </section>
 
-<section>
+<section id="expectedoutcomes">
     <h2>Expected Outcomes</h2>
     <p>
         We expect SafetyCopilot to reduce analysis time and cognitive workload while improving consistency 
@@ -405,7 +439,7 @@ nations:
     </p>
 </section>
 
-<section>
+<section id="references">
     <h2>References</h2>
     <p class="citation">
         [1] I. M. Dokas, "From hallucinations to hazards: benchmarking LLMs for hazard analysis in safety-critical
