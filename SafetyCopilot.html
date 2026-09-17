@@ -1,218 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SafetyCopilot Research Proposal</title>
-<style>
-    body {
-        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f7f7f9;
-        color: #222;
-        line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <title>SafetyCopilot Research Proposal</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    header {
-        background: #003366;
-        color: white;
-        padding: 30px 40px;
-        text-align: center;
-    }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #00264d;
+            padding: 12px 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
 
-    h1, h2, h3 {
-        color: #003366;
-        margin-top: 40px;
-    }
+            .navbar ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
 
-    section {
-        background: white;
-        margin: 30px auto;
-        padding: 30px;
-        width: 85%;
-        max-width: 900px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+            .navbar li {
+                margin: 0;
+            }
 
-    p {
-        margin-bottom: 15px;
-    }
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                font-size: 0.95rem;
+                padding: 6px 10px;
+                border-radius: 4px;
+                transition: background 0.3s ease;
+            }
 
-    ul {
-        margin-left: 20px;
-    }
+                .navbar a:hover {
+                    background: #00509e;
+                }
 
-    .citation {
-        font-size: 0.9em;
-        color: #555;
-    }
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f7f7f9;
+            color: #222;
+            line-height: 1.6;
+        }
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        font-size: 0.85em;
-        color: #666;
-    }
-    .menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    padding: 16px;
-    background: #003366;
-}
+        header {
+            background: #003366;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
+        h1, h2, h3 {
+            color: #003366;
+            margin-top: 40px;
+        }
 
-.menu a:hover,
-.menu a:focus-visible {
-    background: #005599;
-    text-decoration: underline;
-}
-</style>
+        section {
+            background: white;
+            margin: 30px auto;
+            padding: 30px;
+            width: 85%;
+            max-width: 900px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .citation {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        /* Section navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .navbar a {
+            display: block;
+        }
+
+        section[id] {
+            scroll-margin-top: 85px;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 15px;
+            color: #00509e;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+            .back-to-top:hover {
+                text-decoration: underline;
+            }
+
+        @media (max-width: 900px) {
+            .navbar ul {
+                gap: 6px;
+            }
+
+            .navbar a {
+                font-size: 0.85rem;
+                padding: 6px 7px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .menu-toggle {
+                display: block;
+                margin: 0 auto;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 2px;
+                margin-top: 8px;
+            }
+
+                .navbar ul.open {
+                    display: flex;
+                }
+
+            .navbar a {
+                text-align: center;
+                padding: 9px 10px;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body id="top">
 
-<header>
-    <p>CSCI 7420 Human-Computer Interactions</p>
-    <p>Human-AI Teaming</p>
-    <p>Group Project - Research Proposal: SafetyCopilot</p>
-    <p>An Interactive AI System for Hazard Analysis of Software Requirements</p>
-</header>
-
-<nav class="menu" aria-label="Page sections">
-    <a href="#abstract">Abstract</a>
-    <a href="#introduction">Introduction</a>
-    <a href="#researchcontext">Research Context</a>
-    <a href="#problemstatement">Problem Statement</a>
-    <a href="#researchobjectives">Research Objectives</a>
-    <a href="#researchhypothesis">Research Hypotheses</a>
-    <a href="#system">System Description</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#expectedoutcomes">Expected Outcomes</a>
-    <a href="#references">References</a>
-</nav>
-
-<section id="abstract">
-    <h2>Abstract</h2>
-
-    <p>
-        Hazard analysis is a fundamental activity within system safety engineering. 
-        It is performed to identify hazards, derive safety constraints, and ensure that system and software requirements 
-        adequately mitigate risks before deployment. 
-        However, the process is highly knowledge-intensive, cognitively demanding, and time-consuming, particularly for modern 
-        software-intensive and safety-critical systems. 
-        The emergence of Large Language Models (LLMs) presents new opportunities for supporting safety engineers by automating 
-        portions of requirements analysis and hazard identification. 
-        At the same time, concerns remain regarding hallucinations, inconsistent reasoning, false hazard detection, and overreliance on AI-generated recommendations.
-    </p>
-    <p>
-        This research proposes the development and evaluation of SafetyCopilot, an interactive human-AI decision support system designed to assist safety engineers 
-        during software requirements hazard analysis. 
-        Rather than replacing human expertise, SafetyCopilot is designed as a collaborative tool that allows engineers to independently assess requirements, 
-        compare their analyses with AI-generated classifications, review AI recommendations and explanations, and ultimately make final decisions regarding hazard 
-        identification and mitigation.
-        Using a controlled experimental design, the study will evaluate whether AI-assisted hazard analysis improves hazard-identification accuracy, 
-        reduces task completion time, lowers cognitive workload, and enhances analysis consistency.
-    </p>
-    <p> 
-        Additionally, the research will investigate how explainable AI features influence trust calibration, reliance, and decision quality. 
-        The findings will contribute to human-centered AI, explainable AI, safety engineering, and requirements engineering by providing 
-        empirical evidence regarding the practical role of LLMs in safety-critical system analysis.
-
-    </p>
-</section>
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="nav-inner">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="section-menu">
+                ☰ <span>Sections</span>
+            </button>
+            <ul id="section-menu">
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#research-context">Research Context</a></li>
+                <li><a href="#problem-statement">Problem Statement</a></li>
+                <li><a href="#research-objectives">Research Objectives</a></li>
+                <li><a href="#research-hypotheses">Research Hypotheses</a></li>
+                <li><a href="#system-description">System Description</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#expected-outcomes">Expected Outcomes</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
-<section id="introduction">
-    <h2>Introduction</h2>
-    <p>
-       The increasing complexity of software-intensive systems has significantly transformed modern safety engineering. 
-       Contemporary systems used in aviation, transportation, healthcare, energy production, defense, and industrial automation 
-       often contain millions of lines of software code and interact with humans through sophisticated control architectures. 
-       Consequently, failures in requirements engineering can lead directly to hazardous conditions that threaten safety, 
-       reliability, and operational performance.
-    </p>
-    <p>
-        Safety engineering seeks to identify hazards early in the system lifecycle and implement controls that eliminate or 
-        reduce risk to acceptable levels. Hazard analysis is therefore a cornerstone of safety assurance activities. 
-        According to system safety principles established in MIL-STD-882E, safety engineering involves identifying hazards, 
-        classifying risks, and implementing mitigations throughout the system lifecycle. [cto.mil], [waru.edu].
+    <header>
+        <p>CSCI 7420 Human-Computer Interactions</p>
+        <p>Human-AI Teaming</p>
+        <p>Group Project - Research Proposal: SafetyCopilot</p>
+        <p>An Interactive AI System for Hazard Analysis of Software Requirements</p>
+    </header>
 
-    </p>
-    <p>
-        Recent advances in Large Language Models (LLMs) have demonstrated strong capabilities in natural-language understanding, 
-        summarization, reasoning support, and document analysis. These capabilities make LLMs potentially valuable tools for analyzing 
-        large collections of requirements documents and detecting safety-related concerns. However, current evidence indicates 
-        that LLMs exhibit significant variation in performance when applied to hazard analysis and may produce inconsistent recommendations, 
-        incorrect hazard classifications, or hallucinated reasoning. [eurekamag.com], [explore.openaire.eu]
-    </p>
-    <p>
+    <section id="abstract">
+        <h2>Abstract</h2>
 
-        This research addresses the need for AI systems that augment, rather than replace, human safety engineers. The proposed SafetyCopilot 
-        framework positions AI as a collaborative assistant capable of supporting human decision-making while preserving human authority over 
-        safety judgments. The project seeks to determine whether such collaboration improves safety engineering performance and decision quality.
+        <p>
+            Hazard analysis is a fundamental activity within system safety engineering.
+            It is performed to identify hazards, derive safety constraints, and ensure that system and software requirements
+            adequately mitigate risks before deployment.
+            However, the process is highly knowledge-intensive, cognitively demanding, and time-consuming, particularly for modern
+            software-intensive and safety-critical systems.
+            The emergence of Large Language Models (LLMs) presents new opportunities for supporting safety engineers by automating
+            portions of requirements analysis and hazard identification.
+            At the same time, concerns remain regarding hallucinations, inconsistent reasoning, false hazard detection, and overreliance on AI-generated recommendations.
+        </p>
+        <p>
+            This research proposes the development and evaluation of SafetyCopilot, an interactive human-AI decision support system designed to assist safety engineers
+            during software requirements hazard analysis.
+            Rather than replacing human expertise, SafetyCopilot is designed as a collaborative tool that allows engineers to independently assess requirements,
+            compare their analyses with AI-generated classifications, review AI recommendations and explanations, and ultimately make final decisions regarding hazard
+            identification and mitigation.
+            Using a controlled experimental design, the study will evaluate whether AI-assisted hazard analysis improves hazard-identification accuracy,
+            reduces task completion time, lowers cognitive workload, and enhances analysis consistency.
+        </p>
+        <p>
+            Additionally, the research will investigate how explainable AI features influence trust calibration, reliance, and decision quality.
+            The findings will contribute to human-centered AI, explainable AI, safety engineering, and requirements engineering by providing
+            empirical evidence regarding the practical role of LLMs in safety-critical system analysis.
 
-    </p>
-</section>
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
 
-<section id="researchcontext">
-    <h2>Research Context </h2>
 
-    <h3>What Human Safety Engineers Do During Hazard Analysis </h3>
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+            The increasing complexity of software-intensive systems has significantly transformed modern safety engineering.
+            Contemporary systems used in aviation, transportation, healthcare, energy production, defense, and industrial automation
+            often contain millions of lines of software code and interact with humans through sophisticated control architectures.
+            Consequently, failures in requirements engineering can lead directly to hazardous conditions that threaten safety,
+            reliability, and operational performance.
+        </p>
+        <p>
+            Safety engineering seeks to identify hazards early in the system lifecycle and implement controls that eliminate or
+            reduce risk to acceptable levels. Hazard analysis is therefore a cornerstone of safety assurance activities.
+            According to system safety principles established in MIL-STD-882E, safety engineering involves identifying hazards,
+            classifying risks, and implementing mitigations throughout the system lifecycle. [cto.mil], [waru.edu].
 
-    <p>
-        To understand the significance of SafetyCopilot, it is important to understand how safety engineers currently perform requirements-based 
-        hazard analysis in practice.
-    </p>
-    <p>
-        During early system development, human safety engineers typically:
-        <h4>Review System Documentation</h4>
+        </p>
+        <p>
+            Recent advances in Large Language Models (LLMs) have demonstrated strong capabilities in natural-language understanding,
+            summarization, reasoning support, and document analysis. These capabilities make LLMs potentially valuable tools for analyzing
+            large collections of requirements documents and detecting safety-related concerns. However, current evidence indicates
+            that LLMs exhibit significant variation in performance when applied to hazard analysis and may produce inconsistent recommendations,
+            incorrect hazard classifications, or hallucinated reasoning. [eurekamag.com], [explore.openaire.eu]
+        </p>
+        <p>
 
-        Engineers examine:
-        <ul>
-            <li>System requirements specifications</li>
-            <li>Software requirements documents</li>
-            <li>Concept of operations documents</li>
-            <li>Architectural descriptions</li>
-            <li>Interface specifications</li>
-            <li>Previous hazard analyses</li>
-            <li>Regulatory requirements</li>
-        </ul>
-    </p>
+            This research addresses the need for AI systems that augment, rather than replace, human safety engineers. The proposed SafetyCopilot
+            framework positions AI as a collaborative assistant capable of supporting human decision-making while preserving human authority over
+            safety judgments. The project seeks to determine whether such collaboration improves safety engineering performance and decision quality.
 
-    <p>
-        The objective is to understand system functionality, operating environments, assumptions, and interactions.
-       
-    </p>
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
 
-    <p>
-        
-        <h4>Identify Potential Hazards</h4>
+    <section id="research-context">
+        <h2>Research Context </h2>
 
-        Engineers search for conditions that could lead to:
-        <ul>
-            <li>Injury or loss of life</li>
-            <li>Environmental harm</li>
-            <li>Property damage</li>
-            <li>Mission failure</li>
-            <li>Regulatory violations</li>
-        </ul>
-    </p>
+        <h3>What Human Safety Engineers Do During Hazard Analysis </h3>
 
-    <p>
-        This involves reasoning about failures, incorrect functionality, omitted functionality, and human-system interactions. [sebokwiki.org], [cto.mil]
-       
-    </p>
+        <p>
+            To understand the significance of SafetyCopilot, it is important to understand how safety engineers currently perform requirements-based
+            hazard analysis in practice.
+        </p>
+        <p>
+            During early system development, human safety engineers typically:
+            <h4>Review System Documentation</h4>
 
-    <h4>Evaluate Requirements for Safety Deficiencies</h4>
+            Engineers examine:
+            <ul>
+                <li>System requirements specifications</li>
+                <li>Software requirements documents</li>
+                <li>Concept of operations documents</li>
+                <li>Architectural descriptions</li>
+                <li>Interface specifications</li>
+                <li>Previous hazard analyses</li>
+                <li>Regulatory requirements</li>
+            </ul>
+        </p>
+
+        <p>
+            The objective is to understand system functionality, operating environments, assumptions, and interactions.
+
+        </p>
+
+        <p>
+
+            <h4>Identify Potential Hazards</h4>
+
+            Engineers search for conditions that could lead to:
+            <ul>
+                <li>Injury or loss of life</li>
+                <li>Environmental harm</li>
+                <li>Property damage</li>
+                <li>Mission failure</li>
+                <li>Regulatory violations</li>
+            </ul>
+        </p>
+
+        <p>
+            This involves reasoning about failures, incorrect functionality, omitted functionality, and human-system interactions. [sebokwiki.org], [cto.mil]
+
+        </p>
+
+        <h4>Evaluate Requirements for Safety Deficiencies</h4>
 
         Safety engineers assess whether requirements:
         <ul>
@@ -223,14 +329,14 @@
             <li>Lack verification criteria</li>
             <li>Create conflicting system behavior</li>
         </ul>
-    </p>
+        </p>
 
-    <p>
-        
-        This activity is particularly labor-intensive because each requirement must be interpreted within the broader operational context.
-    </p>
-    
-    <h4>Perform Hazard Analysis Methods</h4>
+        <p>
+
+            This activity is particularly labor-intensive because each requirement must be interpreted within the broader operational context.
+        </p>
+
+        <h4>Perform Hazard Analysis Methods</h4>
 
         Common techniques include:
         <ul>
@@ -241,13 +347,13 @@
             <li>System Requirements Hazard Analysis (SRHA)</li>
 
         </ul>
-    </p>
+        </p>
 
-    <p>
-      STPA has become especially important for software-intensive systems because it can identify hazards arising from interactions and inadequate control rather than component failures alone. [direct.mit.edu], [dspace.mit.edu], [psas.scripts.mit.edu]
-    </p>
+        <p>
+            STPA has become especially important for software-intensive systems because it can identify hazards arising from interactions and inadequate control rather than component failures alone. [direct.mit.edu], [dspace.mit.edu], [psas.scripts.mit.edu]
+        </p>
 
-    <h4>Derive Safety Requirements</h4>
+        <h4>Derive Safety Requirements</h4>
 
         Once hazards are identified, engineers generate:
         <ul>
@@ -258,13 +364,13 @@
 
 
         </ul>
-    </p>
+        </p>
 
-    <p>
-        These requirements are integrated into system specifications and traced throughout development. [safetyartisan.com], [dspace.mit.edu]
-    </p>
+        <p>
+            These requirements are integrated into system specifications and traced throughout development. [safetyartisan.com], [dspace.mit.edu]
+        </p>
 
-    <h4>Document Risk Assessments</h4>
+        <h4>Document Risk Assessments</h4>
 
         Safety engineers maintain hazard logs documenting:
         <ul>
@@ -278,178 +384,207 @@
 
 
         </ul>
-    </p>
+        </p>
 
-    <p>
-        These requirements are integrated into system specifications and traced throughout development. [safetyartisan.com], [dspace.mit.edu]
-    </p>
-   
-</section>
+        <p>
+            These requirements are integrated into system specifications and traced throughout development. [safetyartisan.com], [dspace.mit.edu]
+        </p>
 
-
-<section id="problemstatement">
-    <h2>Problem Statement</h2>
-    <p>
-        Traditional hazard analysis requires extensive manual review of requirements documents, often resulting 
-        in slow analysis cycles, cognitive overload, and inconsistent identification of hazards. 
-        Recent research shows that LLMs can assist with hazard identification but may also produce hallucinations 
-        or incorrect recommendations, requiring careful human oversight.
-    </p>
-    <p>
-        The problem this project addresses is whether interactive AI assistance—specifically SafetyCopilot—can 
-        improve hazard‑identification accuracy, reduce workload, and support better decision‑making during 
-        safety‑engineering tasks.
-    </p>
-</section>
-
-<section id="researchobjectives">
-    <h2>Research Objectives</h2>
-    <ul>
-        <li>Evaluate whether SafetyCopilot improves hazard‑identification accuracy compared to human‑only analysis.</li>
-        <li>Measure false positives, false negatives, and classification agreement between humans and the LLM.</li>
-        <li>Assess cognitive workload, trust, and reliance on AI recommendations.</li>
-        <li>Determine whether AI explanations help users make more informed decisions.</li>
-        <li>Analyze the effectiveness of interactive human‑AI collaboration in safety‑critical engineering tasks.</li>
-    </ul>
-</section>
-
-<section id="researchhypothesis">
-    <h2>Research Hypotheses</h2>
-    
-    <h3>H1: Hazard Identification</h3>
-    <p>
-        Human-AI teams will identify more relevant hazards than human-only participants: 
-    </p>
-    <p>
-        H1 =: P (Human + AI) > P (Human).
-    </p>
-    
-    <h3>H2: False Positives</h3>
-    <p>
-        AI assistance may increase the number of false positives: 
-    </p>
-    <p>
-        H2 =: F P (Human + AI) > F P (Human)
-    </p>
-
-    <h3>H3: Explanations</h3>
-    <p>
-        Participants receiving evidence-based explanations will make better decisions about AI recommendations than participants receiving recommendations without expla-
-nations: 
-    </p>
-    <p>
-        H3 : DQexplanation > DQrecommendation.
-
-    </p>
-
-     <h3>H4: Uncertainty</h3>
-    <p>
-        Providing AI uncertainty information will improve trust calibration:
-    </p>
-    <p>
-        H4 : T Cuncertainty > T Cno uncertainty
-
-    </p>
-
-     <h3>H5: Workload</h3>
-    <p>
-        AI assistance may reduce task completion time:
-    </p>
-    <p>
-        H5 =: T imeAI < T imeHuman.
-
-    </p>
-    <p>
-        However, excessive recommendations may increase cognitive workload:
-    </p>
-    <p>
-        H5b : WorkloadAI > W orkloadHuman.
-    </p>
-
-    <h3>H6: Human-AI Team Performance</h3>
-    <p>
-        The central team-performance hypothesis is:
-    </p>
-    <p>
-        H6 : PHuman + AI > max (PHuman, PAI).
-
-    </p>
-    <p>
-        This hypothesis tests whether the human-AI team demonstrates genuine complementarity rather than simply transferring work from the human to the AI.
-    </p>
-    
-</section>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
 
 
-<section id="system">
-    <h2>System Description</h2>
-    <p>
-        SafetyCopilot is a web‑based application that allows users to upload system requirements documents 
-        (e.g., PDF files). The system extracts individual requirements and initiates a controlled experimental 
-        workflow consisting of five phases:
-    </p>
+    <section id="problem-statement">
+        <h2>Problem Statement</h2>
+        <p>
+            Traditional hazard analysis requires extensive manual review of requirements documents, often resulting
+            in slow analysis cycles, cognitive overload, and inconsistent identification of hazards.
+            Recent research shows that LLMs can assist with hazard identification but may also produce hallucinations
+            or incorrect recommendations, requiring careful human oversight.
+        </p>
+        <p>
+            The problem this project addresses is whether interactive AI assistance—specifically SafetyCopilot—can
+            improve hazard‑identification accuracy, reduce workload, and support better decision‑making during
+            safety‑engineering tasks.
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
 
-    <ol>
-        <li><strong>Human Classification:</strong> The human operator labels each requirement as hazard or non‑hazard.</li>
-        <li><strong>AI Classification:</strong> The LLM independently classifies each requirement.</li>
-        <li><strong>Human vs. AI Comparison:</strong> The system displays agreement and disagreement between classifications.</li>
-        <li><strong>AI Recommendations:</strong> The LLM proposes requirement revisions and identifies unsafe or missing requirements.</li>
-        <li><strong>Human Acceptance:</strong> The operator reviews and accepts or rejects AI recommendations.</li>
-    </ol>
+    <section id="research-objectives">
+        <h2>Research Objectives</h2>
+        <ul>
+            <li>Evaluate whether SafetyCopilot improves hazard‑identification accuracy compared to human‑only analysis.</li>
+            <li>Measure false positives, false negatives, and classification agreement between humans and the LLM.</li>
+            <li>Assess cognitive workload, trust, and reliance on AI recommendations.</li>
+            <li>Determine whether AI explanations help users make more informed decisions.</li>
+            <li>Analyze the effectiveness of interactive human‑AI collaboration in safety‑critical engineering tasks.</li>
+        </ul>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
 
-    <p class="citation">
-        (All system details sourced from Preproposal.pdf)
-    </p>
-</section>
+    <section id="research-hypotheses">
+        <h2>Research Hypotheses</h2>
 
-<section id="methodology">
-    <h2>Methodology</h2>
-    <p>
-        The research will follow a controlled experimental design using SafetyCopilot as the primary tool for 
-        hazard analysis. Participants will analyze a standardized set of software requirements using both 
-        human‑only and human‑AI workflows.
-    </p>
+        <h3>H1: Hazard Identification</h3>
+        <p>
+            Human-AI teams will identify more relevant hazards than human-only participants:
+        </p>
+        <p>
+            H1 =: P (Human + AI) > P (Human).
+        </p>
 
-    <h3>Experimental Measures</h3>
-    <ul>
-        <li>Hazard‑identification accuracy</li>
-        <li>False positives and false negatives</li>
-        <li>Task‑completion time</li>
-        <li>Cognitive workload (NASA‑TLX)</li>
-        <li>Trust and reliance on AI recommendations</li>
-    </ul>
+        <h3>H2: False Positives</h3>
+        <p>
+            AI assistance may increase the number of false positives:
+        </p>
+        <p>
+            H2 =: F P (Human + AI) > F P (Human)
+        </p>
 
-    <h3>Data Collection</h3>
-    <p>
-        Data will be collected through system logs, participant surveys, and structured observation. 
-        All requirement classifications and interactions with SafetyCopilot will be recorded for analysis.
-    </p>
-</section>
+        <h3>H3: Explanations</h3>
+        <p>
+            Participants receiving evidence-based explanations will make better decisions about AI recommendations than participants receiving recommendations without expla-
+            nations:
+        </p>
+        <p>
+            H3 : DQexplanation > DQrecommendation.
 
-<section id="expectedoutcomes">
-    <h2>Expected Outcomes</h2>
-    <p>
-        We expect SafetyCopilot to reduce analysis time and cognitive workload while improving consistency 
-        in hazard identification. However, we also anticipate that AI explanations will play a critical role 
-        in determining whether users trust or question AI‑generated recommendations.
-    </p>
-    <p>
-        The results will contribute to understanding how LLM‑based tools can be safely integrated into 
-        safety‑critical engineering workflows.
-    </p>
-</section>
+        </p>
 
-<section id="references">
-    <h2>References</h2>
-    <p class="citation">
-        [1] I. M. Dokas, "From hallucinations to hazards: benchmarking LLMs for hazard analysis in safety-critical
-        systems," Safety Science, vol. 194, p. 107056, Feb. 2026.
-    </p>
-</section>
+        <h3>H4: Uncertainty</h3>
+        <p>
+            Providing AI uncertainty information will improve trust calibration:
+        </p>
+        <p>
+            H4 : T Cuncertainty > T Cno uncertainty
 
-<footer>
-    SafetyCopilot Research Proposal — Generated for academic coursework.
-</footer>
+        </p>
+
+        <h3>H5: Workload</h3>
+        <p>
+            AI assistance may reduce task completion time:
+        </p>
+        <p>
+            H5 =: T imeAI < T imeHuman.
+
+        </p>
+        <p>
+            However, excessive recommendations may increase cognitive workload:
+        </p>
+        <p>
+            H5b : WorkloadAI > W orkloadHuman.
+        </p>
+
+        <h3>H6: Human-AI Team Performance</h3>
+        <p>
+            The central team-performance hypothesis is:
+        </p>
+        <p>
+            H6 : PHuman + AI > max (PHuman, PAI).
+
+        </p>
+        <p>
+            This hypothesis tests whether the human-AI team demonstrates genuine complementarity rather than simply transferring work from the human to the AI.
+        </p>
+
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
+
+
+    <section id="system-description">
+        <h2>System Description</h2>
+        <p>
+            SafetyCopilot is a web‑based application that allows users to upload system requirements documents
+            (e.g., PDF files). The system extracts individual requirements and initiates a controlled experimental
+            workflow consisting of five phases:
+        </p>
+
+        <ol>
+            <li><strong>Human Classification:</strong> The human operator labels each requirement as hazard or non‑hazard.</li>
+            <li><strong>AI Classification:</strong> The LLM independently classifies each requirement.</li>
+            <li><strong>Human vs. AI Comparison:</strong> The system displays agreement and disagreement between classifications.</li>
+            <li><strong>AI Recommendations:</strong> The LLM proposes requirement revisions and identifies unsafe or missing requirements.</li>
+            <li><strong>Human Acceptance:</strong> The operator reviews and accepts or rejects AI recommendations.</li>
+        </ol>
+
+        <p class="citation">
+            (All system details sourced from Preproposal.pdf)
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
+
+    <section id="methodology">
+        <h2>Methodology</h2>
+        <p>
+            The research will follow a controlled experimental design using SafetyCopilot as the primary tool for
+            hazard analysis. Participants will analyze a standardized set of software requirements using both
+            human‑only and human‑AI workflows.
+        </p>
+
+        <h3>Experimental Measures</h3>
+        <ul>
+            <li>Hazard‑identification accuracy</li>
+            <li>False positives and false negatives</li>
+            <li>Task‑completion time</li>
+            <li>Trust and reliance on AI recommendations</li>
+        </ul>
+
+        <h3>Data Collection</h3>
+        <p>
+            Data will be collected through system logs, participant surveys, and structured observation.
+            All requirement classifications and interactions with SafetyCopilot will be recorded for analysis.
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
+
+    <section id="expected-outcomes">
+        <h2>Expected Outcomes</h2>
+        <p>
+            We expect SafetyCopilot to reduce analysis time and cognitive workload while improving consistency
+            in hazard identification. However, we also anticipate that AI explanations will play a critical role
+            in determining whether users trust or question AI‑generated recommendations.
+        </p>
+        <p>
+            The results will contribute to understanding how LLM‑based tools can be safely integrated into
+            safety‑critical engineering workflows.
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
+
+    <section id="references">
+        <h2>References</h2>
+        <p class="citation">
+            [1] I. M. Dokas, "From hallucinations to hazards: benchmarking LLMs for hazard analysis in safety-critical
+            systems," Safety Science, vol. 194, p. 107056, Feb. 2026.
+        </p>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+    </section>
+
+    <footer>
+        SafetyCopilot Research Proposal — Generated for academic coursework.
+    </footer>
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".menu-toggle");
+    const menu = document.getElementById("section-menu");
+
+    if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+            const isOpen = menu.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        menu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                menu.classList.remove("open");
+                toggle.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+});
+    </script>
 
 </body>
 </html>
